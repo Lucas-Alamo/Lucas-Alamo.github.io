@@ -19,19 +19,12 @@ body {
   line-height: 1.65;
   transition: background-color 0.35s ease, color 0.35s ease;
   overflow-x: hidden;
-  cursor: none; /* custom cursor */
-}
-
-/* Fallback for touch devices: restore default cursor */
-@media (hover: none) {
-  body { cursor: auto; }
-  .cursor, .cursor-dot { display: none; }
 }
 
 img, video, iframe { display: block; max-width: 100%; }
 ul { list-style: none; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: none; border: none; background: none; }
+button { font-family: inherit; border: none; background: none; }
 
 /* ── 1. Design Tokens ───────────────────────────────────────── */
 :root {
@@ -102,39 +95,6 @@ h1, h2, h3 {
   font-family: 'DM Serif Display', Georgia, serif;
   line-height: 1.15;
   font-weight: 400;
-}
-
-/* ── 3. Custom Cursor ───────────────────────────────────────── */
-.cursor {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--clr-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-  mix-blend-mode: normal;
-}
-
-.cursor-dot {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  background: var(--clr-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.06s ease;
-}
-
-.cursor.is-hovering {
-  width: 54px;
-  height: 54px;
-  background: var(--clr-accent-bg);
-  border-color: var(--clr-accent);
 }
 
 /* ── 4. Layout Helpers ──────────────────────────────────────── */
@@ -257,7 +217,6 @@ h1, h2, h3 {
   font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0.05em;
-  cursor: none;
 }
 
 .btn-lang:hover,
@@ -281,7 +240,6 @@ h1, h2, h3 {
   height: 38px;
   padding: 8px;
   border-radius: var(--radius-sm);
-  cursor: none;
 }
 
 .btn-menu span {
@@ -494,7 +452,6 @@ h1, h2, h3 {
   font-weight: 500;
   letter-spacing: 0.01em;
   transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform 0.15s ease;
-  cursor: none;
 }
 
 .btn:active { transform: scale(0.97); }
@@ -712,7 +669,7 @@ h1, h2, h3 {
 
 .contact__email {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 3rem);
   color: var(--clr-text);
   letter-spacing: -0.02em;
   position: relative;
