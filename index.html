@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light" data-testid="html-root">
 <head>
+  <!-- FAVICON for .png files -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portafolio profesional de QA Software Analyst — Testing, Automatización y Calidad de Software." />
@@ -22,9 +28,6 @@
   <!-- ══════════════════════════ HEADER ══════════════════════════ -->
   <header class="header" id="header" role="banner" data-testid="header">
     <div class="header__inner">
-      <a href="#hero" class="header__logo" aria-label="Ir al inicio" data-testid="logo">
-        <span class="logo-bracket">[</span>QA<span class="logo-bracket">]</span>
-      </a>
 
       <nav class="header__nav" aria-label="Navegación principal" data-testid="main-nav">
         <ul role="list">
@@ -140,13 +143,13 @@
 
         <!-- Skill pills -->
         <div class="hero__skills" aria-label="Habilidades principales" data-testid="hero-skills">
-          <span class="skill-pill">Selenium</span>
           <span class="skill-pill">Playwright</span>
+          <span class="skill-pill">Selenium</span>
           <span class="skill-pill">Postman</span>
+          <span class="skill-pill">Allure</span>
+          <span class="skill-pill">CI/CD</span>
           <span class="skill-pill">Jira</span>
           <span class="skill-pill">SQL</span>
-          <span class="skill-pill">API Testing</span>
-          <span class="skill-pill">CI/CD</span>
         </div>
       </div>
     </section>
@@ -178,15 +181,14 @@
             </div>
             <div class="project-card__body">
               <div class="project-card__badges" aria-label="Stack tecnológico">
-                <span class="badge">Cypress</span>
-                <span class="badge">TypeScript</span>
-                <span class="badge">GitHub Actions</span>
+                <span class="badge">Jira</span>
+                <span class="badge">Spreadsheet</span>
               </div>
-              <h3 id="proj1Title" class="project-card__title" data-i18n="projects.p1.title">Suite de Tests E2E — E-commerce</h3>
+              <h3 id="proj1Title" class="project-card__title" data-i18n="projects.p1.title">Documentación</h3>
               <p class="project-card__desc" data-i18n="projects.p1.desc">
-                Implementación de una suite completa de pruebas end-to-end para un flujo de compra con cobertura del 92%, integrada en el pipeline CI/CD.
+                Creación de Test Plan, Test Cases y Reporte de Bugs.
               </p>
-              <a href="#" class="project-card__link" aria-label="Ver proyecto Suite de Tests E2E" data-testid="project-1-link">
+              <a href="#" class="project-card__link" aria-label="Ver proyecto Documentación" data-testid="project-1-link">
                 <span data-i18n="projects.viewProject">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -208,14 +210,14 @@
             <div class="project-card__body">
               <div class="project-card__badges" aria-label="Stack tecnológico">
                 <span class="badge">Postman</span>
-                <span class="badge">Newman</span>
-                <span class="badge">REST API</span>
+                <span class="badge">DBeaver</span>
+                <span class="badge">Playwright</span>
               </div>
-              <h3 id="proj2Title" class="project-card__title" data-i18n="projects.p2.title">Automatización de APIs REST</h3>
+              <h3 id="proj2Title" class="project-card__title" data-i18n="projects.p2.title">REST API Testing + SQL</h3>
               <p class="project-card__desc" data-i18n="projects.p2.desc">
-                Colección de 150+ tests de API con validaciones de esquema, performance y regresión, ejecutándose en cada despliegue.
+                descripción2 pendiente
               </p>
-              <a href="#" class="project-card__link" aria-label="Ver proyecto APIs REST" data-testid="project-2-link">
+              <a href="#" class="project-card__link" aria-label="Ver proyecto REST API Testing + SQL" data-testid="project-2-link">
                 <span data-i18n="projects.viewProject">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -237,14 +239,14 @@
             <div class="project-card__body">
               <div class="project-card__badges" aria-label="Stack tecnológico">
                 <span class="badge">Selenium</span>
-                <span class="badge">Python</span>
-                <span class="badge">pytest</span>
+                <span class="badge">Playwright</span>
+                <span class="badge">Katalon</span>
               </div>
-              <h3 id="proj3Title" class="project-card__title" data-i18n="projects.p3.title">Framework QA con Python</h3>
+              <h3 id="proj3Title" class="project-card__title" data-i18n="projects.p3.title">UI Automation</h3>
               <p class="project-card__desc" data-i18n="projects.p3.desc">
-                Diseño de un framework de automatización modular con POM, data-driven testing y reportes HTML detallados.
+                Proyecto 3 pendiente
               </p>
-              <a href="#" class="project-card__link" aria-label="Ver proyecto Framework QA" data-testid="project-3-link">
+              <a href="#" class="project-card__link" aria-label="Ver proyecto UI Automation" data-testid="project-3-link">
                 <span data-i18n="projects.viewProject">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -265,13 +267,13 @@
             </div>
             <div class="project-card__body">
               <div class="project-card__badges" aria-label="Stack tecnológico">
-                <span class="badge">k6</span>
-                <span class="badge">Grafana</span>
-                <span class="badge">Performance</span>
+                <span class="badge">Appium</span>
+                <span class="badge">Android</span>
+                <span class="badge">iOS</span>
               </div>
-              <h3 id="proj4Title" class="project-card__title" data-i18n="projects.p4.title">Testing de Carga con k6</h3>
+              <h3 id="proj4Title" class="project-card__title" data-i18n="projects.p4.title">Mobile Automation</h3>
               <p class="project-card__desc" data-i18n="projects.p4.desc">
-                Análisis de rendimiento bajo carga para una plataforma SaaS, identificando cuellos de botella y mejorando el tiempo de respuesta en un 40%.
+                Proyecto 4 pendiente
               </p>
               <a href="#" class="project-card__link" aria-label="Ver proyecto Testing de Carga" data-testid="project-4-link">
                 <span data-i18n="projects.viewProject">Ver proyecto</span>
@@ -294,14 +296,13 @@
             </div>
             <div class="project-card__body">
               <div class="project-card__badges" aria-label="Stack tecnológico">
-                <span class="badge badge--featured">Playwright</span>
-                <span class="badge">Node.js</span>
-                <span class="badge">BDD</span>
-                <span class="badge">Cucumber</span>
+                <span class="badge">K6</span>
+                <span class="badge">JMeter</span>
+                <span class="badge">Postman</span>
               </div>
-              <h3 id="proj5Title" class="project-card__title" data-i18n="projects.p5.title">BDD Testing con Playwright</h3>
+              <h3 id="proj5Title" class="project-card__title" data-i18n="projects.p5.title">Performance Testing</h3>
               <p class="project-card__desc" data-i18n="projects.p5.desc">
-                Implementación de estrategia BDD con Cucumber y Playwright para alinear pruebas con requerimientos de negocio. Reducción del 30% en tiempo de regresión.
+                Proyecto 5 pendiente
               </p>
               <a href="#" class="project-card__link" aria-label="Ver proyecto BDD Playwright" data-testid="project-5-link">
                 <span data-i18n="projects.viewProject">Ver proyecto</span>
