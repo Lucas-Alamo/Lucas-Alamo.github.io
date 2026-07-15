@@ -3,265 +3,233 @@
    Features: i18n · Dark Mode · Intersection Observer · Cursor
    ═══════════════════════════════════════════════════════════ */
 
-'use strict';
+"use strict";
 
 /* ── 1. Translations ────────────────────────────────────────── */
 const TRANSLATIONS = {
   es: {
-    'meta.title':           'Portfolio — QA Analyst',
-    'nav.about':            'Sobre mí',
-    'nav.projects':         'Proyectos',
-    'hero.eyebrow':         'QA Software Analyst',
-    'hero.available':       'Disponible',
-    'hero.bio':             'Software tester QA, pero QA como Quality Assistant, no Quality Assurance, ya que los testers no aseguran la calidad, eso lo hacen los devs, que son quienes crean y modifican el código de la app; los testers evalúan el estado de ésta.',
-    'hero.cta':             'Ver proyectos',
-    'projects.title':       'Proyectos',
-    'projects.viewProject': 'Ver en GitHub',
-    'projects.viewProjectSoon': 'Disponible en GitHub próximamente',
-    'projects.p1.title':    'Documentación',
-    'projects.p1.desc':     'Creación de Test Plan, Test Cases y Reporte de Bugs.',
-    'projects.p2.title':    'Automatización de APIs REST',
-    'projects.p2.desc':     'descripción2pendiente',
-    'projects.p3.title':    'UI Automation',
-    'projects.p3.desc':     'Proyecto 3 pendiente',
-    'projects.p4.title':    'Mobile Automation',
-    'projects.p4.desc':     'Proyecto 4 pendiente',
-    'projects.p5.title':    'Performance Testing',
-    'projects.p5.desc':     'Proyecto 5 pendiente',
-    'footer.copy':          'Diseñado y desarrollado por',
-    'footer.built':         'Construido con HTML, CSS & JS puro.',
+    "meta.title": "Portfolio — QA Analyst",
+    "nav.about": "Sobre mí",
+    "nav.projects": "Proyectos",
+    "hero.eyebrow": "QA Software Analyst",
+    "hero.available": "Disponible",
+    "hero.bio":
+      "Software tester QA, pero QA como Quality Assistant, no Quality Assurance, ya que los testers no aseguran la calidad, eso lo hacen los devs, que son quienes crean y modifican el código de la app; los testers evalúan el estado de ésta.",
+    "hero.cta": "Ver proyectos",
+    "projects.title": "Proyectos",
+    "projects.viewProject": "Ver en GitHub",
+    "projects.viewProjectSoon": "Disponible en GitHub próximamente",
+    "projects.p1.title": "Documentación",
+    "projects.p1.desc": "Creación de Test Plan, Test Cases y Reporte de Bugs.",
+    "projects.p2.title": "Automatización de APIs REST",
+    "projects.p2.desc": "descripción2pendiente",
+    "projects.p3.title": "UI Automation",
+    "projects.p3.desc": "Proyecto 3 pendiente",
+    "projects.p4.title": "Mobile Automation",
+    "projects.p4.desc": "Proyecto 4 pendiente",
+    //    "projects.p5.title": "Performance Testing",
+    //    "projects.p5.desc": "Proyecto 5 pendiente",
+    "footer.copy": "Diseñado y desarrollado por",
   },
   en: {
-    'meta.title':           'QA Portfolio — Software Analyst',
-    'nav.about':            'About me',
-    'nav.projects':         'Projects',
-    'hero.eyebrow':         'QA Software Analyst',
-    'hero.available':       'Available',
-    'hero.bio':             'pendiente traducir',
-    'hero.cta':             'View on GitHub',
-    'projects.title':       'Projects',
-    'projects.viewProject': 'View on GitHub',
-    'projects.viewProjectSoon': 'Available on GitHub soon',
-    'projects.p1.title':    'Documentation',
-    'projects.p1.desc':     'Creation of Test Plan, Test Cases and Bug Reports.',
-    'projects.p2.title':    'REST API Automation',
-    'projects.p2.desc':     'desc2pending',
-    'projects.p3.title':    'UI Automation',
-    'projects.p3.desc':     'Project 3 pending',
-    'projects.p4.title':    'Mobile Automation',
-    'projects.p4.desc':     'Project 4 pending',
-    'projects.p5.title':    'Performance Testing',
-    'projects.p5.desc':     'Project 5 pending',
-    'footer.copy':          'Designed and developed by',
-    'footer.built':         'Built with plain HTML, CSS & JS.',
+    "meta.title": "QA Portfolio — Software Analyst",
+    "nav.about": "About me",
+    "nav.projects": "Projects",
+    "hero.eyebrow": "QA Software Analyst",
+    "hero.available": "Available",
+    "hero.bio": "pendiente traducir",
+    "hero.cta": "View on GitHub",
+    "projects.title": "Projects",
+    "projects.viewProject": "View on GitHub",
+    "projects.viewProjectSoon": "Available on GitHub soon",
+    "projects.p1.title": "Documentation",
+    "projects.p1.desc": "Creation of Test Plan, Test Cases and Bug Reports.",
+    "projects.p2.title": "REST API Automation",
+    "projects.p2.desc": "desc2pending",
+    "projects.p3.title": "UI Automation",
+    "projects.p3.desc": "Project 3 pending",
+    "projects.p4.title": "Mobile Automation",
+    "projects.p4.desc": "Project 4 pending",
+    //    "projects.p5.title": "Performance Testing",
+    //    "projects.p5.desc": "Project 5 pending",
+    "footer.copy": "Designed and developed by",
   },
 };
 
 /* ── 2. State ───────────────────────────────────────────────── */
-let currentLang  = localStorage.getItem('qa-lang')  || 'es';
-let currentTheme = localStorage.getItem('qa-theme') || 'light';
+let currentLang = localStorage.getItem("qa-lang") || "es";
+let currentTheme = localStorage.getItem("qa-theme") || "light";
 
 /* ── 3. i18n ────────────────────────────────────────────────── */
 function applyTranslations(lang) {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.es;
 
   // Update all elements with data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
   // Update <html lang>
-  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute("lang", lang);
 
   // Update page title
-  if (dict['meta.title']) document.title = dict['meta.title'];
+  if (dict["meta.title"]) document.title = dict["meta.title"];
 
   // Update lang toggle label
-  const langLabel = document.getElementById('langLabel');
-  if (langLabel) langLabel.textContent = lang === 'es' ? 'EN' : 'ES';
+  const langLabel = document.getElementById("langLabel");
+  if (langLabel) langLabel.textContent = lang === "es" ? "EN" : "ES";
 
   // Update aria-label on lang button
-  const langToggle = document.getElementById('langToggle');
+  const langToggle = document.getElementById("langToggle");
   if (langToggle) {
-    langToggle.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a Español');
+    langToggle.setAttribute(
+      "aria-label",
+      lang === "es" ? "Switch to English" : "Cambiar a Español",
+    );
   }
 }
 
 function toggleLang() {
-  currentLang = currentLang === 'es' ? 'en' : 'es';
-  localStorage.setItem('qa-lang', currentLang);
+  currentLang = currentLang === "es" ? "en" : "es";
+  localStorage.setItem("qa-lang", currentLang);
   applyTranslations(currentLang);
 }
 
 /* ── 4. Dark Mode ───────────────────────────────────────────── */
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute("data-theme", theme);
 
-  const btn = document.getElementById('themeToggle');
+  const btn = document.getElementById("themeToggle");
   if (!btn) return;
 
-  const isDark = theme === 'dark';
-  btn.setAttribute('aria-pressed', String(isDark));
+  const isDark = theme === "dark";
+  btn.setAttribute("aria-pressed", String(isDark));
   btn.setAttribute(
-    'aria-label',
-    isDark ? (currentLang === 'es' ? 'Activar modo claro' : 'Enable light mode')
-           : (currentLang === 'es' ? 'Activar modo oscuro' : 'Enable dark mode')
+    "aria-label",
+    isDark
+      ? currentLang === "es"
+        ? "Activar modo claro"
+        : "Enable light mode"
+      : currentLang === "es"
+        ? "Activar modo oscuro"
+        : "Enable dark mode",
   );
 }
 
 function toggleTheme() {
-  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-  localStorage.setItem('qa-theme', currentTheme);
+  currentTheme = currentTheme === "light" ? "dark" : "light";
+  localStorage.setItem("qa-theme", currentTheme);
   applyTheme(currentTheme);
 }
 
 /* ── 5. Sticky Header ───────────────────────────────────────── */
 function initStickyHeader() {
-  const header = document.getElementById('header');
+  const header = document.getElementById("header");
   if (!header) return;
 
   const onScroll = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 20);
+    header.classList.toggle("is-scrolled", window.scrollY > 20);
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
   onScroll(); // run once on load
 }
 
 /* ── 6. Mobile Menu ─────────────────────────────────────────── */
 function initMobileMenu() {
-  const toggle = document.getElementById('menuToggle');
-  const menu   = document.getElementById('mobileMenu');
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
   if (!toggle || !menu) return;
 
   let isOpen = false;
 
   const open = () => {
     isOpen = true;
-    toggle.classList.add('is-open');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', currentLang === 'es' ? 'Cerrar menú' : 'Close menu');
-    menu.removeAttribute('hidden');
+    toggle.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute(
+      "aria-label",
+      currentLang === "es" ? "Cerrar menú" : "Close menu",
+    );
+    menu.removeAttribute("hidden");
   };
 
   const close = () => {
     isOpen = false;
-    toggle.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', currentLang === 'es' ? 'Abrir menú' : 'Open menu');
-    menu.setAttribute('hidden', '');
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute(
+      "aria-label",
+      currentLang === "es" ? "Abrir menú" : "Open menu",
+    );
+    menu.setAttribute("hidden", "");
   };
 
-  toggle.addEventListener('click', () => (isOpen ? close() : open()));
+  toggle.addEventListener("click", () => (isOpen ? close() : open()));
 
   // Close on link click
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', close);
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", close);
   });
 
   // Close on outside click
-  document.addEventListener('click', e => {
-    if (isOpen && !toggle.contains(e.target) && !menu.contains(e.target)) close();
+  document.addEventListener("click", (e) => {
+    if (isOpen && !toggle.contains(e.target) && !menu.contains(e.target))
+      close();
   });
 }
 
 /* ── 7. Intersection Observer (fade-in) ─────────────────────── */
 function initScrollAnimations() {
-  if (!('IntersectionObserver' in window)) {
+  if (!("IntersectionObserver" in window)) {
     // Fallback: just show everything
-    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('is-visible'));
+    document
+      .querySelectorAll(".fade-in")
+      .forEach((el) => el.classList.add("is-visible"));
     return;
   }
 
   const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target); // fire once
         }
       });
     },
     {
       threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px',
-    }
+      rootMargin: "0px 0px -40px 0px",
+    },
   );
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-}
-
-/* ── 8. Custom Cursor ───────────────────────────────────────── */
-function initCustomCursor() {
-  // Skip on touch-only devices
-  if (!window.matchMedia('(hover: hover)').matches) return;
-
-  const cursor    = document.getElementById('cursor');
-  const cursorDot = document.getElementById('cursorDot');
-  if (!cursor || !cursorDot) return;
-
-  let mouseX = -100, mouseY = -100;
-  let curX   = -100, curY   = -100;
-  let raf;
-
-  // Raw dot follows mouse exactly
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top  = mouseY + 'px';
-  });
-
-  // Ring lags slightly for smoothness
-  const animateCursor = () => {
-    curX += (mouseX - curX) * 0.18;
-    curY += (mouseY - curY) * 0.18;
-    cursor.style.left = curX + 'px';
-    cursor.style.top  = curY + 'px';
-    raf = requestAnimationFrame(animateCursor);
-  };
-  raf = requestAnimationFrame(animateCursor);
-
-  // Hover state on interactive elements
-  const INTERACTIVE = 'a, button, [role="button"], iframe, input, textarea, select, .project-card';
-
-  document.querySelectorAll(INTERACTIVE).forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
-  });
-
-  // Hide cursor when it leaves window
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity    = '0';
-    cursorDot.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity    = '1';
-    cursorDot.style.opacity = '1';
-  });
+  document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 }
 
 /* ── 9. Footer Year ─────────────────────────────────────────── */
 function setFooterYear() {
-  const el = document.getElementById('footerYear');
+  const el = document.getElementById("footerYear");
   if (el) el.textContent = new Date().getFullYear();
 }
 
 /* ── 10. Smooth scroll for anchor links ─────────────────────── */
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const targetId = anchor.getAttribute('href').slice(1);
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const targetId = anchor.getAttribute("href").slice(1);
       if (!targetId) return;
       const target = document.getElementById(targetId);
       if (!target) return;
       e.preventDefault();
 
-      const headerHeight = document.getElementById('header')?.offsetHeight || 68;
-      const targetTop    = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+      const headerHeight =
+        document.getElementById("header")?.offsetHeight || 68;
+      const targetTop =
+        target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
 
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      window.scrollTo({ top: targetTop, behavior: "smooth" });
     });
   });
 }
@@ -273,11 +241,11 @@ function init() {
   applyTranslations(currentLang);
 
   // Wire up controls
-  const langToggle  = document.getElementById('langToggle');
-  const themeToggle = document.getElementById('themeToggle');
+  const langToggle = document.getElementById("langToggle");
+  const themeToggle = document.getElementById("themeToggle");
 
-  if (langToggle)  langToggle.addEventListener('click',  toggleLang);
-  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if (langToggle) langToggle.addEventListener("click", toggleLang);
+  if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
 
   // Init modules
   initStickyHeader();
@@ -289,8 +257,8 @@ function init() {
 }
 
 // Run after DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
